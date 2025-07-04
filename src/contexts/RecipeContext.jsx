@@ -3,13 +3,12 @@ import { recipeData } from "../utils/RecipeData";
 
 export const recipeContext = createContext(null);
 
-const RecipeContext = (props) => {
-  
+const RecipeContext = ({children}) => {
   const [recipeCollection, setRecipeCollection] = useState(recipeData);
 
   return (
-    <recipeContext.Provider value={{recipeCollection, setRecipeCollection}}>
-      {props.Children}
+    <recipeContext.Provider value={{ recipeCollection, setRecipeCollection }}>
+      {children}
     </recipeContext.Provider>
   );
 };

@@ -6,10 +6,10 @@ import { ToastContainer } from "react-toastify";
 import RecipeContext from "./contexts/RecipeContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-  // <RecipeContext>
+  <RecipeContext>
     <BrowserRouter>
       <App />
       <ToastContainer />
     </BrowserRouter>
-  // </RecipeContext>
+  </RecipeContext>
 );
