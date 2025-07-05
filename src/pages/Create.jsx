@@ -1,12 +1,21 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { recipeContext } from '../contexts/RecipeContext';
+import {nanoid} from 'nanoid'
 
 const Create = () => {
   const {register, handleSubmit, reset} = useForm();
-  const [data, setData] = useState([]);
-
+  const {recipeCollection, setRecipeCollection} = useContext(recipeContext);
   const onSubmit = (data) => {
-    console.log(data);  
+    
+    data.id = nanoid();
+    const ingredients = data.ingredients.split(', ');
+    data.ingredients = ingredients;
+    const process = data.process.split(', ');
+    data.process = process;
+    console.log(data);
+    setRecipeCollection(prev => [...prev, data]);
+    reset();
   }
 
   return (
@@ -15,13 +24,13 @@ const Create = () => {
         <h2 className="text-2xl font-semibold text-center text-green-400">Create a New Recipe</h2>
 
         <input
-          {...register('name')}
+          {...register('title')}
           placeholder="Recipe Name"
           className="w-full bg-gray-700 border border-gray-600 rounded-lg py-2 px-4 outline-none focus:ring-2 focus:ring-green-400"
         />
 
         <input
-          {...register('image_url')}
+          {...register('image')}
           placeholder="Image URL"
           className="w-full bg-gray-700 border border-gray-600 rounded-lg py-2 px-4 outline-none focus:ring-2 focus:ring-green-400"
         />

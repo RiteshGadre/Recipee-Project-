@@ -21,6 +21,7 @@ const RecipeeCard = ({ id, title, category, image, ingredients, process }) => {
         <h3 className="mt-1 text-lg font-bold text-white">{title}</h3>
 
         {/* Ingredients preview */}
+        
         <p className="mt-2 text-sm text-gray-300">
           <strong>Ingredients:</strong> {ingredients.slice(0, 3).join(", ")}...
         </p>
